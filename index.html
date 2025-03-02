@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>3D生存游戏</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-family: Arial;
+            font-size: 16px;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        生命值: <span id="health">5</span>/<span id="maxHealth">100</span><br>
+        攻击力: <span id="attack">1</span><br>
+        恐龙生命值: <span id="monsterHealth">100</span>
+    </div>
+    <div id="controls">
+        方向键: 移动 | 空格键: 射击 | Z: 跳跃
+    </div>
+    <div id="shop" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); padding: 20px; border-radius: 10px; color: white;">
+        <h2>商城</h2>
+        <div style="margin: 10px 0;">分数: <span id="score">0</span></div>
+        <div class="shop-item" onclick="buyItem('health')" style="cursor: pointer; padding: 10px; margin: 5px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+            生命值+10 (花费: 50分)
+        </div>
+        <div class="shop-item" onclick="buyItem('attack')" style="cursor: pointer; padding: 10px; margin: 5px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+            攻击力+2 (花费: 100分)
+        </div>
+        <div class="shop-item" onclick="buyItem('maxHealth')" style="cursor: pointer; padding: 10px; margin: 5px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+            最大生命值+10 (花费: 200分)
+        </div>
+        <div class="shop-item" onclick="buyItem('grenadeUpgrade')" style="cursor: pointer; padding: 10px; margin: 5px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+            手雷伤害+5 (花费: 150分)
+        </div>
+        <button onclick="toggleShop()" style="margin-top: 10px; padding: 5px 10px;">关闭商城</button>
+    </div>
+    <button onclick="toggleShop()" style="position: absolute; top: 10px; right: 10px; padding: 5px 10px;">商城</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 
